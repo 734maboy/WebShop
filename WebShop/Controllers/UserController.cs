@@ -21,6 +21,7 @@ namespace WebShop.Controllers
 		private readonly EFGenericRepository<Customer> customerRepo;
 		private readonly EFGenericRepository<UserRole> roleRepo;
 		private readonly EFGenericRepository<Order> orderRepo;
+		private readonly EFGenericRepository<OrderStatus> orderStatusRepo;
 		private AppDbContext appDbContext;
 		
 		public UserController(IServiceProvider serviceProvider)
@@ -30,6 +31,7 @@ namespace WebShop.Controllers
 			customerRepo = new EFGenericRepository<Customer>(appDbContext);
 			roleRepo = new EFGenericRepository<UserRole>(appDbContext);
 			orderRepo = new EFGenericRepository<Order>(appDbContext);
+			orderStatusRepo = new EFGenericRepository<OrderStatus>(appDbContext);
 		}
 		
 
@@ -58,7 +60,7 @@ namespace WebShop.Controllers
 			var response = new
 			{
 				access_token = encodedJwt,
-				id = new Guid(),
+				id = user.id,
 				customerId = new Guid(),
 				login = user.login,
 				name = "",
@@ -74,6 +76,11 @@ namespace WebShop.Controllers
 			{
 				Customer customer = customerRepo.Get(x => x.userId == user.id).FirstOrDefault();
 				List<Order> orders = orderRepo.Get(o => o.customerId == customer.id).ToList();
+				foreach (var order in orders)
+				{
+					OrderStatus status = orderStatusRepo.Get(s => s.id == order.orderStatusId).FirstOrDefault();
+					order.orderStatus = status;
+				}
 				response = new
 				{
 					access_token = encodedJwt,
@@ -91,7 +98,7 @@ namespace WebShop.Controllers
 				};
 			}
 
-
+			Console.WriteLine(response);
 			return Json(response);
 		}
 

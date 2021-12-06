@@ -340,7 +340,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Стул",
           price = productRnd.Next(1000, 9999),
           categoryId = categories[0].id
@@ -348,7 +348,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Компьютер PC High Gaming Z390",
           price = productRnd.Next(30000, 40000),
           categoryId = categories[1].id
@@ -356,7 +356,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Вилка обычная",
           price = productRnd.Next(30, 99),
           categoryId = categories[2].id
@@ -364,7 +364,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Светильник XS-3000",
           price = productRnd.Next(1000, 5000),
           categoryId = categories[3].id
@@ -372,7 +372,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Тазик waterContainer 12hgg100",
           price = productRnd.Next(1000, 9999),
           categoryId = categories[4].id
@@ -380,7 +380,7 @@ namespace WebShop.Migrations
         new Product()
         {
           id = Guid.NewGuid(),
-          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{letterRnd.Next('A', 'Z' + 1).ToString()}{letterRnd.Next('A', 'Z' + 1).ToString()}{productRnd.Next(10, 99)}",
+          code = $"{productRnd.Next(10, 99)}-{productRnd.Next(1000, 9999)}-{(char)letterRnd.Next('A', 'Z' + 1)}{(char)letterRnd.Next('A', 'Z' + 1)}{productRnd.Next(10, 99)}",
           name = "Крем для чистки обуви",
           price = productRnd.Next(1000, 9999),
           categoryId = categories[5].id

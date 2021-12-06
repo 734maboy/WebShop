@@ -40,6 +40,7 @@ namespace WebShop.Controllers
 				OrderStatus status = orderStatusRepo.Get(o => o.id == order.orderStatusId).FirstOrDefault(); 
 				order.customer = customer;
 				order.orderStatus = status;
+				
 			}
 			return Ok(allOrders);
 			//if (allOrders == null)
@@ -83,12 +84,13 @@ namespace WebShop.Controllers
 
 		[Authorize]
 		[HttpPost("/closeOrder")]
-		public IActionResult closeOrder(Guid orderId, Guid orderStatusId)
+		public IActionResult closeOrder(Guid orderId)
 		{
 			Order order = orderRepo.Get(o => o.id ==orderId).FirstOrDefault();
+			OrderStatus orderStatus = orderStatusRepo.Get(s => s.name == "Выполнен").FirstOrDefault();
 			if (order != null)
 			{
-				order.orderStatusId = orderStatusId;
+				order.orderStatusId = orderStatus.id;
 				orderRepo.Update(order);
 				return Ok("Заказ успешно закрыт");
 			}
@@ -97,13 +99,14 @@ namespace WebShop.Controllers
 
 		[Authorize]
 		[HttpPost("/acceptOrder")]
-		public IActionResult acceptOrder(Guid orderId, Guid statusId, DateTime shipmentDate)
+		public IActionResult acceptOrder(Guid orderId, DateTime shipmentDate)
 		{
 			Order order = orderRepo.Get( o => o.id == orderId).FirstOrDefault();
+			OrderStatus orderStatus = orderStatusRepo.Get(s => s.name == "Выполняется").FirstOrDefault();
 			if (order != null)
 			{
 				order.shipmentDate = shipmentDate;
-				order.orderStatusId = statusId;
+				order.orderStatusId = orderStatus.id;
 				orderRepo.Update(order);
 				return Ok("Заказ подтверждён");
 			}
@@ -132,6 +135,7 @@ namespace WebShop.Controllers
 				item.orderId = order.id;
 				orderItemRepo.Create(item);
 			}
+			order.orderStatus = status;
 			return Ok(new
 			{
 				message = "Заказ успешно добавлен",
